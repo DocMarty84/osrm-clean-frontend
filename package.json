@@ -1,0 +1,40 @@
+{
+  "name": "osrm-clean-frontend",
+  "version": "0.0.1",
+  "description": "Clean frontend interface for project OSRM",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "browserify -t browserify-css src/index.js --standalone osrm > bundle.raw.js && uglifyjs bundle.raw.js -c -m --source-map=bundle.js.map -o bundle.js",
+    "start-index": "python -m SimpleHTTPServer",
+    "start": "npm run build && npm run start-index",
+    "prepub": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "osrm-clean-frontend"
+  },
+  "keywords": [
+    "osrm",
+    "lrm",
+    "directions",
+    "routing",
+    "api"
+  ],
+  "author": "Nicolas Martinelli",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "browserify-css": "^0.9.1",
+    "uglify-js": "^2.6.2"
+  },
+  "dependencies": {
+    "leaflet": "^0.7.7",
+    "leaflet-control-geocoder": "^1.4.0",
+    "leaflet-routing-machine": "^3.0.1",
+    "leaflet.locatecontrol": "^0.52.0",
+    "font-awesome": "^4.6.1",
+    "bootstrap": "^3.3.6",
+    "lodash": "^4.12.0",
+    "qs": "^6.2.0"
+  }
+}
