@@ -1,10 +1,17 @@
 'use strict';
 
-var map = require('./map');
 var control = require('./control');
 var lang = require('./lang');
+var links = require('./links');
+var map = require('./map');
+var state = require('./state');
 
-var mapWrap = map({});
-var controlWrap = control(mapWrap._map, {});
-var langObj = lang({}).addTo(mapWrap._map);
+var parsedOptions = links.parse(window.location.search.slice(1, -1));
+
+var mapWrap = map(parsedOptions.map);
+var controlWrap = control(mapWrap._map, parsedOptions.control);
+var langObj = lang(parsedOptions.lang).addTo(mapWrap._map);
+var stateObj = state(
+  mapWrap._map, controlWrap._control, langObj, L.extend(parsedOptions.map, parsedOptions.control)
+);
 
