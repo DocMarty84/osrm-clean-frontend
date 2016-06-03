@@ -1,6 +1,7 @@
 'use strict';
 
 require('leaflet');
+require('lodash');
 
 var Print = L.Class.extend({
   includes: L.Mixin.Events,
@@ -26,11 +27,26 @@ var Print = L.Class.extend({
 
   addEvents: function() {
     this.on('print', function(e) {
+
+      var routeToPrint = this._container
+        .getElementsByClassName('leaflet-routing-alt')[this._controlWrap.routeSelected.routesIndex];
+      routeToPrint.className = '';
+
       // See this._controlWrap.routeSelected.routesIndex to know which one was selected
       console.log(this._container);
+      var tmplCompiled = _.template(this._createTemplate());
+      var tmplRendered = tmplCompiled({foo: routeToPrint});
+      document.getElementsByClassName('map')[0].setAttribute('style', 'display: none;');
+      document.getElementsByClassName('print')[0].appendChild(routeToPrint);
     }, this);
 
   },
+
+  _createTemplate: function() {
+    return '' +
+      '<%= foo %>'
+    ;
+  }
 
 });
 

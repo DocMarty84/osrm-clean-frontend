@@ -26,6 +26,7 @@ var ControlWrapper = L.Class.extend({
     this._map = map;
     this._control = this.createControl();
     this._plan = this._control.getPlan();
+    this.routeSelected = undefined;
 
     this.addEvents();
   },
@@ -77,6 +78,11 @@ var ControlWrapper = L.Class.extend({
       if (waypoints.length === 1) {
         self._map.panTo(waypoints[0].latLng);
       }
+    }, this);
+
+    // Save the route selected for further use
+    this._control.on('routeselected', function(e){
+      self.routeSelected = e.route;
     }, this);
 
   },
