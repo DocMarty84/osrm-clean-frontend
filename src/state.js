@@ -45,6 +45,17 @@ var State = L.Class.extend({
       self.update();
       window.location.reload();
     }, this);
+
+    this._control.on('routeselected', function(e) {
+      self.options.alternative = e.route.routesIndex;
+      self.update();
+    }, this);
+
+    this._control.on('waypointschanged', function() {
+      self.options.alternative = undefined;
+      self.update();
+    }, this);
+
   },
 
 });

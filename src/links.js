@@ -56,6 +56,7 @@ function formatLink(options) {
       c: options.center && _formatCoord(options.center) || undefined,
       loc: options.waypoints && _formatWaypoints(options.waypoints) || undefined,
       hl: options.language || 'en',
+      alt: options.alternative,
   };
   return qs.stringify(linkOptions, {indices: false});
 }
@@ -70,6 +71,7 @@ function parseLink(link) {
   parsedOptions.control = _.delUndefined({
     'waypoints': q.loc && _parseWaypoints(q.loc) || undefined,
     'language': q.hl || undefined,
+    'alternative': q.alt,
   });
   parsedOptions.lang = _.delUndefined({
     'language': q.hl || undefined,
