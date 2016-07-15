@@ -29,6 +29,7 @@ var MapWrapper = L.Class.extend({
     };
     this.overlays = {
       'Touring': L.tileLayer('https://c.be-mobile.biz/d/public/BENELUX_20140901_0/all/LOS/{z}/{x}/{y}.png', {}),
+      'Touring Extended': L.tileLayer('https://c.be-mobile.biz/d/public/endare/LOS/{z}/{x}/{y}.png', {}),
       'Clouds': L.tileLayer('http://a.maps.owm.io/current/CLOUDS_STYLE/{z}/{x}/{y}?appid=b1b15e88fa797225412429c1c50c122a', {}),
       'Precipitations': L.tileLayer('http://b.maps.owm.io/current/PRECIPITATION_STYLE/{z}/{x}/{y}?appid=b1b15e88fa797225412429c1c50c122a', {}),
     };

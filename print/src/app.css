@@ -1,0 +1,46 @@
+@import url("../../node_modules/bootstrap/dist/css/bootstrap.min.css");
+@import url("../../node_modules/leaflet/dist/leaflet.css");
+@import url("../../node_modules/leaflet-control-geocoder/dist/Control.Geocoder.css");
+@import url("../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css");
+
+/*Main map*/
+
+.map {
+  background: #eee;
+  height: 300px;
+  width: 630px;
+  margin-left: 270px;
+}
+
+/*Steps*/
+
+.step {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.step-detail.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+.step-detail.ng-hide {
+  line-height: 0;
+  opacity: 0;
+}
+
+.map-detail {
+  background: #eee;
+  height: 300px;
+  width: 630px;
+}
+
+/*Printing specific*/
+
+@media print {
+  .map {
+    margin-left: 0px;
+  }
+  .map-detail {
+    page-break-inside: avoid;
+  }
+}

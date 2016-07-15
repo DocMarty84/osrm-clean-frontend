@@ -1,9 +1,10 @@
 'use strict';
 
+var icon = require('./icon');
 require('leaflet-control-geocoder');
 require('leaflet-routing-machine');
 
-L.Icon.Default.imagePath = '../node_modules/leaflet/dist/images';
+var iconObj = icon({});
 
 var ControlWrapper = L.Class.extend({
   options: {
@@ -18,7 +19,14 @@ var ControlWrapper = L.Class.extend({
         {color: 'white', opacity: 0.8, weight: 6},
         {color: 'blue', opacity: 0.5, weight: 2}
       ]
-    }
+    },
+    createMarker: function(i, wp, n) {
+      var options = {
+        draggable: true,
+        icon: iconObj.makeIcon(i, n),
+      };
+      return L.marker(wp.latLng, options);
+    },
   },
 
   initialize: function(map, parsedOptions) {
@@ -26,6 +34,7 @@ var ControlWrapper = L.Class.extend({
     this._map = map;
     this._control = this.createControl();
     this._plan = this._control.getPlan();
+    this.alternative = this.options.alternative;
 
     this.addEvents();
   },
@@ -77,6 +86,16 @@ var ControlWrapper = L.Class.extend({
       if (waypoints.length === 1) {
         self._map.panTo(waypoints[0].latLng);
       }
+    }, this);
+
+    // Save the alternative selected for further use
+    this._control.on('routeselected', function(e){
+      self.alternative = e.route.routesIndex;
+    }, this);
+
+    // Clean alternative if waypoints changed, e.g. destination is removed
+    this._control.on('waypointschanged', function() {
+      self.alternative = undefined;
     }, this);
 
   },

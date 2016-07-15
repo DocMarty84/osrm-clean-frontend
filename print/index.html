@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="osrmPrintApp">
+  <head>
+    <meta charset=utf-8 />
+    <title>OSRM Frontend</title>
+    <meta name="viewport" content="initial-scale=1.0 maximum-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="../bin/print.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="map" class="map col-xs-12"></div>
+      <script src="../bin/print.js"></script>
+      <div class="route col-xs-12" ng-controller="RouteDetails">
+        <!-- <input type="text" class="h2 user-title form-control" placeholder={{instructionsToPrint.waypoints[0]}}> -->
+        <h2>{{instructionsToPrint.waypoints[0]}}</h2>
+        <h3>{{instructionsToPrint.subtitle}}</h3>
+        <table class="table" ng-if="instructionsToPrint.steps">
+          <thead>
+            <th></th>
+            <th>Direction</th>
+            <th>Distance</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat-start="step in instructionsToPrint.steps"
+                ng-click="showDetails($index)"
+                ng-mouseenter="addMarker($index)"
+                ng-mouseleave="removeMarker($index)"
+                class="step">
+              <td><span class={{step[0]}}></span></td>
+              <td>{{step[1]}}</td>
+              <td>{{step[2]}}</td>
+            </tr>
+            <tr ng-repeat-end
+                ng-show="instructionsToPrint.showDetail[$index]"
+                class="step-detail">
+              <td></td>
+              <td class="map-step-{{$index}}"></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

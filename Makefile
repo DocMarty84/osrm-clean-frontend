@@ -1,8 +1,17 @@
-.PHONY: dev
-
 all:
-	npm run prepub
+	make install
+	make clean
+	make build
 
-dev:
+build:
 	npm run build
-	npm run build-print
+	cp -r map/src/images/ bin/
+
+clean:
+	rm -rf bin && mkdir bin
+
+install:
+	npm install
+
+watch:
+	npm run watch
