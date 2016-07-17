@@ -23,20 +23,20 @@
   "devDependencies": {
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.8.5",
-    "webpack": "^1.13.1"
+    "file-loader": "^0.9.0",
+    "webpack": "^1.15.0"
   },
   "dependencies": {
-    "angular": "^1.5.7",
-    "angular-animate": "^1.5.7",
-    "bootstrap": "^3.3.6",
-    "font-awesome": "^4.6.1",
-    "jquery": "^3.0.0",
+    "angular": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
     "leaflet": "^0.7.7",
-    "leaflet-control-geocoder": "^1.4.0",
-    "leaflet-routing-machine": "^3.0.1",
+    "leaflet-control-geocoder": "^1.5.4",
+    "leaflet-routing-machine": "^3.2.5",
     "leaflet.locatecontrol": "^0.52.0",
-    "lodash": "^4.12.0",
-    "qs": "^6.2.0"
+    "lodash": "^4.17.4",
+    "qs": "^6.4.0"
   }
 }
