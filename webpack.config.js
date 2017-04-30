@@ -1,5 +1,6 @@
 var extractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: {
@@ -7,7 +8,7 @@ module.exports = {
     print: './print/src/app.js',
   },
   output: {
-    path: './bin',
+    path: path.resolve(__dirname, 'bin'),
     filename: '[name].js',
   },
   module: {
