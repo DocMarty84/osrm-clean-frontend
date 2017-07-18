@@ -9,7 +9,7 @@ var map = require('./map');
 var print = require('./print');
 var state = require('./state');
 
-var parsedOptions = links.parse(window.location.search.slice(1, -1));
+var parsedOptions = links.parse(window.location.search.slice(1));
 
 var mapWrap = map(parsedOptions.map);
 var controlWrap = control(mapWrap._map, parsedOptions.control);

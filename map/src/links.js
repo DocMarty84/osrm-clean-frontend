@@ -64,6 +64,7 @@ function formatLink(options) {
 function parseLink(link) {
   var q = qs.parse(link);
   var parsedOptions = {};
+  q.loc = typeof q.loc === 'string' ? [q.loc] : q.loc;
   parsedOptions.map = _.delUndefined({
     'zoom': _.isInteger(parseInt(q.z)) && _.parseInt(q.z) || undefined,
     'center': q.c && _parseCoord(q.c) || undefined,
